@@ -129,13 +129,38 @@
       <basechoices />
       <invalidValues />
     </Parameter>
+    <Parameter id="17" name="first_line_with_no_char_values" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
   </Parameters>
   <OutputParameters />
   <Relations />
   <Constraints>
-    <Constraint text="!input_file_exists =&gt; !(input_file_is_csv || input_file_separated_by_semicolons || input_file_empty || first_line_empty || first_line_with_space_values || first_line_with_duplicate_values || other_line_with_no_char_values || only_one_line_in_file || empty_second_line_with_nonempty_third_line || spaces_as_values || missing_value || extra_values_in_line || output_file_exists || output_file_with_empty_filename ||&#xD;&#xA;output_file_is_json)">
+    <Constraint text="only_one_line_in_file =&gt; !(empty_second_line_with_nonempty_third_line || spaces_as_values || other_line_with_no_char_values || missing_value || extra_values_in_line)">
+      <Parameters>
+        <Parameter name="only_one_line_in_file" />
+        <Parameter name="empty_second_line_with_nonempty_third_line" />
+        <Parameter name="spaces_as_values" />
+        <Parameter name="other_line_with_no_char_values" />
+        <Parameter name="missing_value" />
+        <Parameter name="extra_values_in_line" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="other_line_with_no_char_values =&gt; !spaces_as_values">
+      <Parameters>
+        <Parameter name="other_line_with_no_char_values" />
+        <Parameter name="spaces_as_values" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="!input_file_exists =&gt; !(first_line_with_no_char_values || input_file_is_csv || input_file_separated_by_semicolons || input_file_empty || first_line_empty || first_line_with_space_values || first_line_with_duplicate_values || other_line_with_no_char_values || only_one_line_in_file || empty_second_line_with_nonempty_third_line || spaces_as_values || missing_value || extra_values_in_line || output_file_exists || output_file_with_empty_filename ||&#xD;&#xA; output_file_is_json)">
       <Parameters>
         <Parameter name="input_file_exists" />
+        <Parameter name="first_line_with_no_char_values" />
         <Parameter name="input_file_is_csv" />
         <Parameter name="input_file_separated_by_semicolons" />
         <Parameter name="input_file_empty" />
@@ -153,27 +178,42 @@
         <Parameter name="output_file_is_json" />
       </Parameters>
     </Constraint>
-    <Constraint text="first_line_empty =&gt; !(first_line_with_space_values || first_line_with_duplicate_values)">
+    <Constraint text="first_line_empty =&gt; !(first_line_with_no_char_values || first_line_with_space_values || first_line_with_duplicate_values)">
       <Parameters>
         <Parameter name="first_line_empty" />
+        <Parameter name="first_line_with_no_char_values" />
         <Parameter name="first_line_with_space_values" />
         <Parameter name="first_line_with_duplicate_values" />
       </Parameters>
     </Constraint>
-    <Constraint text="only_one_line_in_file =&gt; !(empty_second_line_with_nonempty_third_line || spaces_as_values || other_line_with_no_char_values || missing_value || extra_values_in_line)">
+    <Constraint text="input_file_empty =&gt; !(input_file_separated_by_semicolons || first_line_with_no_char_values || first_line_with_space_values || first_line_with_duplicate_values || other_line_with_no_char_values || only_one_line_in_file || empty_second_line_with_nonempty_third_line || spaces_as_values || missing_value || extra_values_in_line)">
       <Parameters>
+        <Parameter name="input_file_empty" />
+        <Parameter name="input_file_separated_by_semicolons" />
+        <Parameter name="first_line_with_no_char_values" />
+        <Parameter name="first_line_with_space_values" />
+        <Parameter name="first_line_with_duplicate_values" />
+        <Parameter name="other_line_with_no_char_values" />
         <Parameter name="only_one_line_in_file" />
         <Parameter name="empty_second_line_with_nonempty_third_line" />
         <Parameter name="spaces_as_values" />
-        <Parameter name="other_line_with_no_char_values" />
         <Parameter name="missing_value" />
         <Parameter name="extra_values_in_line" />
       </Parameters>
     </Constraint>
-    <Constraint text="other_line_with_no_char_values =&gt; !spaces_as_values">
+    <Constraint text="!input_file_empty =&gt; (input_file_separated_by_semicolons || first_line_with_no_char_values || first_line_with_space_values || first_line_with_duplicate_values || other_line_with_no_char_values || only_one_line_in_file || empty_second_line_with_nonempty_third_line || spaces_as_values || missing_value || extra_values_in_line)">
       <Parameters>
+        <Parameter name="input_file_empty" />
+        <Parameter name="input_file_separated_by_semicolons" />
+        <Parameter name="first_line_with_no_char_values" />
+        <Parameter name="first_line_with_space_values" />
+        <Parameter name="first_line_with_duplicate_values" />
         <Parameter name="other_line_with_no_char_values" />
+        <Parameter name="only_one_line_in_file" />
+        <Parameter name="empty_second_line_with_nonempty_third_line" />
         <Parameter name="spaces_as_values" />
+        <Parameter name="missing_value" />
+        <Parameter name="extra_values_in_line" />
       </Parameters>
     </Constraint>
   </Constraints>
@@ -196,63 +236,67 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="1">
       <Value>2</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="2">
       <Value>3</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="3">
       <Value>4</Value>
       <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
-      <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="4">
       <Value>5</Value>
@@ -260,11 +304,12 @@
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
-      <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -277,6 +322,11 @@
       <Value>6</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
@@ -284,10 +334,6 @@
       <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
-      <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -310,106 +356,118 @@
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="7">
       <Value>8</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
-      <Value>true</Value>
       <Value>false</Value>
-      <Value>true</Value>
       <Value>false</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>false</Value>
-      <Value>true</Value>
       <Value>false</Value>
     </Testcase>
     <Testcase TCNo="8">
       <Value>9</Value>
       <Value>true</Value>
-      <Value>false</Value>
       <Value>true</Value>
-      <Value>true</Value>
-      <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
     </Testcase>
     <Testcase TCNo="9">
       <Value>10</Value>
       <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
-      <Value>true</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="10">
       <Value>11</Value>
       <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
       <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="11">
       <Value>12</Value>
       <Value>true</Value>
-      <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
     </Testcase>
     <Testcase TCNo="12">
       <Value>13</Value>
       <Value>true</Value>
+      <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
@@ -419,11 +477,26 @@
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="13">
+      <Value>14</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
   </Testset>
   <Header>
@@ -444,13 +517,14 @@
     <Value>OUTPUT_FILE_EXISTS</Value>
     <Value>OUTPUT_FILE_WITH_EMPTY_FILENAME</Value>
     <Value>OUTPUT_FILE_IS_JSON</Value>
+    <Value>FIRST_LINE_WITH_NO_CHAR_VALUES</Value>
   </Header>
   <Stat-Data>
-    <ExecutionTime>0.035</ExecutionTime>
+    <ExecutionTime>0.166</ExecutionTime>
     <MaxDomainSize>2</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
-    <TotalNoOfCombination>457</TotalNoOfCombination>
-    <TotalNoOfTests>13</TotalNoOfTests>
+    <TotalNoOfCombination>493</TotalNoOfCombination>
+    <TotalNoOfTests>14</TotalNoOfTests>
     <Algorithm>IPOG</Algorithm>
   </Stat-Data>
 </System>
