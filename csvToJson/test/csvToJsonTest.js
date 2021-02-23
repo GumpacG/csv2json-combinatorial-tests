@@ -33,4 +33,20 @@ describe('csvToJson test', function () {
             }); 
         }); 
     });
+
+    it('test 3', function() {
+        let input = 'doesNotExist';
+        let output = 'doseNotExist';
+        let expectedMessage = 'test/TestData/ExpectedMessages/test3Message.txt';
+
+        try {
+            csvToJson.generateJsonFileFromCsv(input, output);
+        } catch (err) {
+            let error = err.message;
+            
+            fs.readFile(expectedMessage, 'utf8', function(err, expectedError){ 
+                expect(expectedError).to.deep.equal(error);
+            }); 
+        } 
+    });
 });
