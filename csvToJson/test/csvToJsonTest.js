@@ -10,7 +10,7 @@ describe('csvToJson test', function () {
         let input1 = 'test/TestData/TestFiles/test1Input.csv';
         let output1 = 'test/TestOutput/Files/test1Output.json';
         let expectedOutput = require('./TestData/ExpectedOutput/test1Output.json');
-        
+
         let result = index.getJsonFromCsv(input1);
 
         fs.writeFile(output1, JSON.stringify(result), function (err) {
