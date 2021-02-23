@@ -46,6 +46,10 @@ describe('csvToJson test', function () {
             
             fs.readFile(expectedMessage, 'utf8', function(err, expectedError){ 
                 expect(error).to.deep.equal(expectedError);
+            });
+            
+            fs.writeFile('test/TestOutput/Messages/test3Message.txt', error, function (err) {
+                if (err) throw err;
             }); 
         } 
     });
@@ -54,6 +58,21 @@ describe('csvToJson test', function () {
         let input = 'test/TestData/TestFiles/test4Input.csv';
         let output = 'test/TestOutput/Files/.json';
         let expectedOutput = 'test/TestData/ExpectedOutput/test4Output.json';
+
+        csvToJson.generateJsonFileFromCsv(input, output);
+
+        fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){ 
+            fs.readFile(output, 'utf8', function(err, actualResult){ 
+                // console.log(actualResult);
+                expect(actualResult).to.deep.equal(expectedResult);
+            }); 
+        }); 
+    });
+
+    it('test 5', function() {
+        let input = 'test/TestData/TestFiles/test5Input.csv';
+        let output = 'test/TestOutput/Files/.txt';
+        let expectedOutput = 'test/TestData/ExpectedOutput/test5Output.txt';
 
         csvToJson.generateJsonFileFromCsv(input, output);
 
