@@ -22,7 +22,7 @@ describe('csvToJson test', function () {
 
     it('test 2', function() {
         let input = 'test/TestData/TestFiles/test2Input.txt';
-        let output = 'test/TestOutput/Files/.json';
+        let output = 'test/TestOutput/Files/test2Output.json';
         let expectedOutput = 'test/TestData/ExpectedOutput/test2Output.json';
 
         csvToJson.generateJsonFileFromCsv(input, output);        
@@ -56,14 +56,13 @@ describe('csvToJson test', function () {
 
     it('test 4', function() {
         let input = 'test/TestData/TestFiles/test4Input.csv';
-        let output = 'test/TestOutput/Files/.json';
+        let output = 'test/TestOutput/Files/test4Output.json';
         let expectedOutput = 'test/TestData/ExpectedOutput/test4Output.json';
 
         csvToJson.generateJsonFileFromCsv(input, output);
 
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){ 
             fs.readFile(output, 'utf8', function(err, actualResult){ 
-                // console.log(actualResult);
                 expect(actualResult).to.deep.equal(expectedResult);
             }); 
         }); 
@@ -71,14 +70,13 @@ describe('csvToJson test', function () {
 
     it('test 5', function() {
         let input = 'test/TestData/TestFiles/test5Input.csv';
-        let output = 'test/TestOutput/Files/.txt';
+        let output = 'test/TestOutput/Files/test5Output.txt';
         let expectedOutput = 'test/TestData/ExpectedOutput/test5Output.txt';
 
         csvToJson.generateJsonFileFromCsv(input, output);
 
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){ 
             fs.readFile(output, 'utf8', function(err, actualResult){ 
-                // console.log(actualResult);
                 expect(actualResult).to.deep.equal(expectedResult);
             }); 
         }); 
