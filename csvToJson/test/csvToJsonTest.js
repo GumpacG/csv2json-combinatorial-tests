@@ -70,8 +70,8 @@ describe('csvToJson test', function () {
 
     it('test 5', function() {
         let input = 'test/TestData/TestFiles/test5Input.csv';
-        let output = 'test/TestOutput/Files/test5Output.txt';
-        let expectedOutput = 'test/TestData/ExpectedOutput/test5Output.txt';
+        let output = 'test/TestOutput/Files/test5Output.json';
+        let expectedOutput = 'test/TestData/ExpectedOutput/test5Output.json';
 
         csvToJson.generateJsonFileFromCsv(input, output);
 
