@@ -36,13 +36,13 @@ describe('csvToJson test', function (done) {
           fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
               fs.readFile(output, 'utf8', function(err, actualResult){
                   expect(actualResult).to.deep.equal(expectedResult);
+                  done();
               });
           });
         } catch (err){
           let error = err.message;
           throw err;
         }
-        done();
     });
 
     it('test 3', function(done) {
@@ -57,13 +57,13 @@ describe('csvToJson test', function (done) {
 
             fs.readFile(expectedMessage, 'utf8', function(err, expectedError){
                 expect(error).to.deep.equal(expectedError);
+                done();
             });
 
             fs.writeFile('test/TestOutput/Messages/test3Message.txt', error, function (err) {
                 if (err) throw err;
             });
         }
-        done();
     });
 
     it('test 4', function(done) {
@@ -76,9 +76,9 @@ describe('csvToJson test', function (done) {
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
             fs.readFile(output, 'utf8', function(err, actualResult){
                 expect(actualResult).to.deep.equal(expectedResult);
+                done();
             });
         });
-        done();
     });
 
     it('test 5', function(done) {
@@ -91,9 +91,9 @@ describe('csvToJson test', function (done) {
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
             fs.readFile(output, 'utf8', function(err, actualResult){
                 expect(actualResult).to.deep.equal(expectedResult);
+                done();
             });
         });
-        done();
     });
 
     it('test 11', function(done) {
@@ -106,9 +106,9 @@ describe('csvToJson test', function (done) {
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
             fs.readFile(output, 'utf8', function(err, actualResult){
                 expect(actualResult).to.deep.equal(expectedResult);
+                done();
             });
         });
-        done();
     });
 
     it('test 12', function(done) {
@@ -121,9 +121,9 @@ describe('csvToJson test', function (done) {
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
             fs.readFile(output, 'utf8', function(err, actualResult){
                 expect(actualResult).to.deep.equal(expectedResult);
+                done();
             });
         });
-        done();
     });
 
     it('test 13', function(done) {
@@ -136,15 +136,15 @@ describe('csvToJson test', function (done) {
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
             fs.readFile(output, 'utf8', function(err, actualResult){
                 expect(actualResult).to.deep.equal(expectedResult);
+                done();
             });
         });
-        done();
     });
 
     it('test 14', function(done) {
         let input = 'test/TestData/TestFiles/test14Input.csv';
         let output = 'test/TestOutput/Files/test14Output.txt';
-        let expectedOutput = 'test/TestData/ExpectedOutput/test13Output.txt';
+        let expectedOutput = 'test/TestData/ExpectedOutput/test14Output.txt';
 
         csvToJson.generateJsonFileFromCsv(input, output);
 
