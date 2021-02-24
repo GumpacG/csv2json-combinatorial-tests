@@ -1,14 +1,30 @@
 [
  {
-  "age,name,gender,favouritefruit,": "12, Joe, M, bananas,"
+  "age": "12",
+  "name": " Joe",
+  "gender": " M",
+  "favouritefruit": " bananas",
+  "": ""
  },
  {
-  "age,name,gender,favouritefruit,": "70, Vik, M, grapes,"
+  "age": "70",
+  "name": " Vik",
+  "gender": " M",
+  "favouritefruit": " grapes",
+  "": ""
  },
  {
-  "age,name,gender,favouritefruit,": "55, Tracy, F, watermelon,"
+  "age": "55",
+  "name": " Tracy",
+  "gender": " F",
+  "favouritefruit": " watermelon",
+  "": ""
  },
  {
-  "age,name,gender,favouritefruit,": "2, Guian, M, oranges,"
+  "age": "2",
+  "name": " Guian",
+  "gender": " M",
+  "favouritefruit": " oranges",
+  "": ""
  }
 ]
