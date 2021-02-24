@@ -151,8 +151,8 @@ describe('csvToJson test', function (done) {
         fs.readFile(expectedOutput, 'utf8', function(err, expectedResult){
             fs.readFile(output, 'utf8', function(err, actualResult){
                 expect(actualResult).to.deep.equal(expectedResult);
+                done();
             });
         });
-        done();
     });
 });
