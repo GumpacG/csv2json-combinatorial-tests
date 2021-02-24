@@ -155,6 +155,4 @@ describe('csvToJson test', function (done) {
         });
         done();
     });
-
-    });
 });
