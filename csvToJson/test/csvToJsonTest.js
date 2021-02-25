@@ -84,6 +84,7 @@ describe('csvToJson test', function () {
                 done();
             }); 
         }); 
+    });
       
     it('test 6', function(done) {
         let input = 'test/TestData/TestFiles/test6Input.txt';
