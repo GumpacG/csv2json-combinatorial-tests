@@ -173,12 +173,6 @@
         <Parameter name="extra_values_in_line" />
       </Parameters>
     </Constraint>
-    <Constraint text="input_file_empty =&gt; first_line_empty">
-      <Parameters>
-        <Parameter name="input_file_empty" />
-        <Parameter name="first_line_empty" />
-      </Parameters>
-    </Constraint>
     <Constraint text="!input_file_exists =&gt; !(first_line_with_no_char_values || input_file_is_csv || input_file_separated_by_semicolons || input_file_empty || first_line_empty || first_line_with_space_values || first_line_with_duplicate_values || other_line_with_no_char_values || only_one_line_in_file || empty_second_line_with_nonempty_third_line || spaces_as_values || missing_value || extra_values_in_line || output_file_exists ||&#xD;&#xA; output_file_is_json)">
       <Parameters>
         <Parameter name="input_file_exists" />
@@ -488,7 +482,7 @@
     <Value>FIRST_LINE_WITH_NO_CHAR_VALUES</Value>
   </Header>
   <Stat-Data>
-    <ExecutionTime>0.098</ExecutionTime>
+    <ExecutionTime>0.185</ExecutionTime>
     <MaxDomainSize>2</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
     <TotalNoOfCombination>445</TotalNoOfCombination>

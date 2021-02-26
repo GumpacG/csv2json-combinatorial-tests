@@ -1,5 +1,5 @@
-,,,
-q,w,e,r
-g,h,       ,w,
-k,        ,s,
-x,v,o,
+---
+q-w-e-r
+g-h-       -w-
+k-        -s-
+x-v-o-
